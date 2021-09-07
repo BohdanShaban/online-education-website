@@ -6,7 +6,7 @@ export default class SliderMain extends Slider {
         super( containerSel, btnsSel );
         
         // ************************** //
-        this.slideIndex = 4;
+        this.slideIndex = 1;
     }
     
     
