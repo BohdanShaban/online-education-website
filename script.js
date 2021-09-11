@@ -5067,7 +5067,8 @@ window.addEventListener('DOMContentLoaded', function () {
     newContainerSel: '.officernew',
     cardItemSel: '.officer__card-item',
     clickDivSel: '.officer__card-item .card__click .plus'
-  }).init(); //new formsPostOnServ().allFormsInit();
+  }).init();
+  new _modules_formsPostOnServ__WEBPACK_IMPORTED_MODULE_4__["default"]().allFormsInit();
 }); // End of 'DOMContentLoaded'
 
 /***/ }),
@@ -5317,7 +5318,7 @@ function () {
         var matrix = '+1 (___) ___-____',
             i = 0,
             def = matrix.replace(/\D/g, ''),
-            val = this.value.replace(/\D/g, '');
+            val = this.value.replace(/\D/g, ''); //
 
         if (def.length >= val.length) {
           val = def;
@@ -5359,18 +5360,19 @@ function () {
 
           var messageDiv = document.createElement('div');
           messageDiv.classList.add('status'); // css class in main.css
+          // messageDiv.style.cssText = `
+          //     margin-top: 15px;
+          //     font-size: 18px;
+          //     color: grey;
+          // `;
 
           form.parentNode.appendChild(messageDiv);
-          messageDiv.style.cssText = "\n                    margin-top: 15px;\n                    font-size: 18px;\n                    color: grey;\n                "; // Img
+          messageDiv.textContent = _this.messages.loading; // Img
 
           var createdImg = document.createElement('img');
           createdImg.classList.add('animated', 'fadeInUp');
           messageDiv.appendChild(createdImg);
-          createdImg.setAttribute('src', _this.messages.spinnerGif); // div with Txt
-
-          var textMessage = document.createElement('div');
-          textMessage.textContent = _this.messages.loading;
-          messageDiv.appendChild(textMessage); // MAKE FORM INVIS & DISAPEAR
+          createdImg.setAttribute('src', _this.messages.spinnerGif); // MAKE FORM INVIS & DISAPEAR
 
           form.classList.add('animated', 'fadeOutUp'); // Invisible BUT Exists
 
@@ -5382,10 +5384,10 @@ function () {
 
           _this.postData(_this.path, formData).then(function (res) {
             console.log(res);
-            textMessage.textContent = _this.messages.success;
+            messageDiv.textContent = _this.messages.success;
             createdImg.setAttribute('src', _this.messages.okImg);
           }).catch(function () {
-            textMessage.textContent = _this.messages.error;
+            messageDiv.textContent = _this.messages.error;
             createdImg.setAttribute('src', _this.messages.failImg);
           }).finally(function () {
             _this.clearAllInputs();
@@ -5399,7 +5401,8 @@ function () {
           });
         });
       });
-    }
+    } // mail@gmail.com
+
   }]);
 
   return formsPostOnServ;
@@ -5578,7 +5581,7 @@ function (_Slider) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SliderMain).call(this, containerSel, btnsSel)); // ************************** //
 
-    _this.slideIndex = 4;
+    _this.slideIndex = 1;
     return _this;
   }
 
